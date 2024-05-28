@@ -5,16 +5,30 @@ Users should be able to add products to their wishlist, remove products, view th
 
 ## Data Model
 
+- [x] Set up data model using Mongoose as follows
+
 ```ts
-const wishlistSchema = new mongoose.Schema({
-    wishlistId: { type: String, required: true }, // auto-generated
-    sessionId: { type: String, required: true }, // Unique ID for guest users
-    items: [{
+const Wishlist = new Schema(
+  {
+    sessionId: {
+      type: String,
+      required: true,
+    },
+    items: [
+      {
         productId: { type: String, required: true },
-        addedAt: { type: Date, default: Date.now }
-    }],
-    shareable: {type: Boolean, default: true}
-});
+        addedAt: { type: Date, default: Date.now },
+      },
+    ],
+    isShareable: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 ```
 
 ## API Endpoints
@@ -67,8 +81,6 @@ Postman will be used for testing.
 
 - [ ] Provide meaningful error messages and HTTP status codes for client-side handling.
 
-### Rate Limiting with `express-rate-limit`
-
 ### Documentation
 
 - [ ] Create clear and comprehensive API documentation using Postman.
@@ -93,7 +105,9 @@ GET /wishlist/:wishlistId?sort=dateAdded&filter=category:electronics
 
 ### Security Enhancement
 
-- [ ] Implement CSRF protection for added security.
+- [x] Implement CSRF protection, and other security measures using Helmet, and cors.
+
+> Test here: <https://securityheaders.com/>
 
 ### Notifications
 
@@ -108,12 +122,13 @@ GET /wishlist/:wishlistId?sort=dateAdded&filter=category:electronics
 - Express
 - Mongoose: For streamlined MongoDB interactions and schema validation.
 - Redis: For fast caching of wishlist data, especially for high traffic.
-- Helmet, cors, express-rate-limit, CSRF: To enhance security.
+- Helmet, cors, CSRF: To enhance security.
+- WInston: Logging.
 - JWT
 
 ## Deployment
 
-Docker to fly.io
+AWS EBS
 
 ## Testing
 

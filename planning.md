@@ -38,15 +38,15 @@ Postman will be used for testing.
 
 ### Public
 
-- `POST /wishlist`: Creates a new wishlist and returns a wishlistId and a JWT token(from the auto-generated sessionId).
-- `GET /wishlist/:wishlistId`: Retrieves a wishlist.
+- [x] `POST /wishlists`: Creates a new wishlist and returns a wishlistId and a JWT token(from the auto-generated sessionId).
+- [x] `GET /wishlists/:id`: Retrieves a wishlist.
 
-### Private
+### Private (requires a valid JWT token)
 
-- `DELETE /wishlist/:wishlistId`: Deletes an entire wishlist.
-- `POST /wishlist/:wishlistId/items`: Adds a product to a wishlist.
-- `DELETE /wishlist/:wishlistId/items/:productId`: Remove a product from a wishlist.
-- `PATCH /wishlist/:wishlistId/shareable`: Toggles the shareable status of a wishlist (requires a valid JWT token).
+- [x] `DELETE /wishlists/:id`: Deletes a wishlist.
+- `POST /wishlists/:id/add-item`: Adds a product to a wishlist.
+- `DELETE /wishlists/:id/remove-item/:productId`: Remove a product from a wishlist.
+- [x] `PATCH /wishlists/:id/shareable`: Toggles the shareable status of a wishlist.
 
 ## Key Features
 
@@ -54,23 +54,23 @@ Postman will be used for testing.
 
 #### Backend
 
-- [ ] Generate unique sessionId and wishlistId.
-- [ ] Store wishlist data with sessionId and wishlistId.
-- [ ] Create a JWT token from the sessionId.
-- [ ] Return wishlistId and JWT to frontend.
-- [ ] Retrieve and validate the JWT token for subsequent protected API requests
-- [ ] If they match, allow the modification. If not, return an error: 403 Forbidden
+- [x] Generate unique sessionId and wishlistId.
+- [x] Store wishlist data with sessionId and wishlistId.
+- [x] Create a JWT token from the sessionId.
+- [x] Return wishlistId and JWT to frontend.
+- [x] Retrieve and validate the JWT token for subsequent protected API requests
+- [x] If they match, allow the modification. If not, return an error: 403 Forbidden
 
-#### Frontend
+#### Frontend: Postman
 
-- [ ] Securely store JWT token in localStorage.
-- [ ] Include JWT token in the Authorization header(`Bearer <token>`) for private API requests.
-- [ ] Handle authentication errors gracefully.
+- [x] Securely store JWT token in variables.
+- [x] Include JWT token in the Authorization header(`Bearer <token>`) for private API requests.
+- [x] Handle authentication errors gracefully.
 
 ### Sharing
 
-- [ ] Generate a shareable URL with the wishlistId.
-- [ ] Adding a mechanism to revoke sharing
+- [x] Allow users to share their wishlist
+- [x] Adding a mechanism to revoke sharing
 
 ### Security
 
@@ -79,7 +79,7 @@ Postman will be used for testing.
 
 ### Error Handling
 
-- [ ] Provide meaningful error messages and HTTP status codes for client-side handling.
+- [x] Provide meaningful error messages and HTTP status codes for client-side handling.
 
 ### Documentation
 

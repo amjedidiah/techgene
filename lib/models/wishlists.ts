@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const Wishlist = new Schema(
+const Wishlists = new Schema(
   {
     sessionId: {
       type: String,
@@ -8,13 +8,13 @@ const Wishlist = new Schema(
     },
     items: [
       {
-        productId: { type: String, required: true },
+        productId: { type: Schema.Types.ObjectId, required: true },
         addedAt: { type: Date, default: Date.now },
       },
     ],
     isShareable: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   {
@@ -22,4 +22,4 @@ const Wishlist = new Schema(
   }
 );
 
-export default model('Wishlist', Wishlist);
+export default model('Wishlists', Wishlists);

@@ -1,6 +1,6 @@
 import winston from 'winston';
 
-// Create a Winston logger instance (customize as needed)
+// Winston logger instance
 const logger = winston.createLogger({
   transports: [new winston.transports.Console()],
   format: winston.format.combine(

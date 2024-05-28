@@ -7,6 +7,7 @@ import expressWinston from 'express-winston';
 import mongoose from 'mongoose';
 import 'dotenv/config';
 import logger from './config/logger';
+import routes from './routes';
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 8080;
@@ -33,17 +34,7 @@ app.use(
 app.use(cookieParser());
 app.use(csrfProtection({ cookie: true }));
 
-app.get(process.env.CSRF_PATH as string, (req, res) =>
-  res.send({
-    data: req.csrfToken(),
-    message: 'CSRF Token fetched successfully',
-  })
-);
-
-app.get('/', (req, res) => {
-  logger.info('Hello API request received');
-  res.send({ message: 'Hello API' });
-});
+app.use(routes);
 
 mongoose
   .connect(process.env.MONGODB_URI as string)

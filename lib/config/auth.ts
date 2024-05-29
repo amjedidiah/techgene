@@ -2,7 +2,7 @@ import { Request } from 'express';
 import { jwtVerify, SignJWT } from 'jose';
 import { randomUUID } from 'crypto';
 import { HttpError } from './error';
-import Wishlists from '../models/wishlists';
+import Wishlists from '../models/wishlists.model';
 
 interface WishlistJwtPayload {
   jti: string;

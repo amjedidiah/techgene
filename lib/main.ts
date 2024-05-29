@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -8,6 +8,7 @@ import mongoose from 'mongoose';
 import 'dotenv/config';
 import logger from './config/logger';
 import routes from './routes';
+import { handleResponseError } from './config/error';
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 8080;
@@ -35,6 +36,12 @@ app.use(cookieParser());
 app.use(csrfProtection({ cookie: true }));
 
 app.use(routes);
+
+// Error handling middleware
+app.use((error: unknown, _req: Request, res: Response, next: NextFunction) => {
+  handleResponseError(res, error);
+  next();
+});
 
 mongoose
   .connect(process.env.MONGODB_URI as string)

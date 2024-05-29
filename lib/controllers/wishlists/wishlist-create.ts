@@ -1,11 +1,14 @@
 import { randomUUID } from 'crypto';
-import { Request, Response } from 'express';
-import { handleResponseError } from '../../config/error';
+import { NextFunction, Request, Response } from 'express';
 import { generateSessionToken } from '../../config/auth';
-import Wishlists from '../../models/wishlists';
+import Wishlists from '../../models/wishlists.model';
 import logger from '../../config/logger';
 
-export default async function createWishlist(_req: Request, res: Response) {
+export default async function wishlistCreate(
+  _req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     // Generate a session token for this guest user
     const sessionId = randomUUID();
@@ -18,7 +21,7 @@ export default async function createWishlist(_req: Request, res: Response) {
     const createdWishlist = await newWishlist.save();
 
     logger.info(`Wishlist created successfully: ${createdWishlist}`);
-    res.json({
+    res.status(201).json({
       data: {
         wishlistId: createdWishlist._id,
         token,
@@ -26,6 +29,6 @@ export default async function createWishlist(_req: Request, res: Response) {
       message: 'Wishlist created successfully',
     });
   } catch (error) {
-    handleResponseError(res, error);
+    next(error);
   }
 }

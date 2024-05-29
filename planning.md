@@ -153,8 +153,8 @@ Postman is used here for testing.
 
 ## Deployment
 
-- [ ] Configure `MONGODB_URI` to MongoDB Atlas value
-- [ ] Deploy to AWS EBS
+- [x] Configure `MONGODB_URI` to MongoDB Atlas value
+- [x] Deploy to fly.io
 
 ## Testing
 
@@ -176,9 +176,10 @@ GET /wishlist/:wishlistId?sort=dateAdded&filter=category:electronics
 
 ### Security Improvement
 
-- [ ] Use HTTPS to secure data transmission.
+- [x] Use HTTPS to secure data transmission.
 
 > Test API security [here](https://securityheaders.com/)
+![Test result](https://i.ibb.co/XCv64Y9/Screenshot-2024-05-29-at-22-56-04.png)
 
 ### Notifications
 

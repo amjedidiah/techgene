@@ -1,5 +1,13 @@
 # Planning Document
 
+## Live Demo
+
+You can test the live API deployed on Fly.io at:
+
+<https://techgene.fly.dev>
+
+![Security score](https://i.ibb.co/XCv64Y9/Screenshot-2024-05-29-at-22-56-04.png)
+
 ## Task
 
 Develop a backend service for a wishlist feature.

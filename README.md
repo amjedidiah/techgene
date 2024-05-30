@@ -8,6 +8,8 @@ You can test the live API deployed on Fly.io at:
 
 <https://techgene.fly.dev>
 
+![Security score](https://i.ibb.co/XCv64Y9/Screenshot-2024-05-29-at-22-56-04.png)
+
 ## Features
 
 * **Guest User Wishlists:** Enables guests to create and manage wishlists without accounts.
@@ -48,14 +50,13 @@ The main API endpoints are listed below. For a full list of API endpoints, refer
 
 > Please make sure to use the specified node version for this project: v.20.11.1
 
-1. **Clone the repository:** `git clone <repository-url>`
-2. **Install dependencies:** `yarn install`
-3. **Environment Variables:**
-    * Duplicate the [`.env.example` file](/.env.example) as `.env`.
+1. **Install dependencies:** `yarn install`
+2. **Environment Variables:**
+    * Rename the [`.env.example` file](/.env.example) to `.env`.
     * Fill in your MongoDB connection string (`MONGODB_URI`) and JWT secret (`JWT_SECRET`).
     * If you have issues with this, you can work with the live demo for testing
-4. **Start the server in DEVELOPMENT mode:** `yarn dev`. Uses `nodemon` for fast refresh
-5. **Start the server in PRODUCTION mode:** `yarn build` then `yarn start`
+3. **Start the server in DEVELOPMENT mode:** `yarn dev`. Uses `nodemon` for fast refresh
+4. **Start the server in PRODUCTION mode:** `yarn start`
 
 ## Technologies Used
 

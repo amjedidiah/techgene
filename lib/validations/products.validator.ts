@@ -32,7 +32,7 @@ export const validateBodyProductId = body('productId', 'Invalid product id')
   .custom((value) => value.match(/^[0-9a-fA-F]{24}$/))
   .custom((id) =>
     Products.findById(id).then((product) => {
-      if (!product)
+      if (!product || product.isDeleted)
         return Promise.reject(`A product with id: ${id} was not found`);
       return true;
     })
@@ -43,7 +43,7 @@ export const validateParamProductId = param('productId', 'Invalid product id')
   .custom((value) => value.match(/^[0-9a-fA-F]{24}$/))
   .custom((id) =>
     Products.findById(id).then((product) => {
-      if (!product)
+      if (!product || product.isDeleted)
         return Promise.reject(`A product with id: ${id} was not found`);
       return true;
     })

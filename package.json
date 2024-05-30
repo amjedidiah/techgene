@@ -5,7 +5,8 @@
   "main": "src/main.js",
   "scripts": {
     "dev": "nodemon lib/main.ts",
-    "predeploy": "rm -rf src && tsc",
+    "build": "rm -rf src && tsc",
+    "predeploy": "yarn build",
     "deploy": "fly deploy",
     "start": "node src/main.js"
   },

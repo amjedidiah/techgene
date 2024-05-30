@@ -149,12 +149,12 @@ Postman is used here for testing.
 
 ### Documentation
 
-- [ ] Create clear and comprehensive API documentation using Postman.
+- [x] Create clear and comprehensive API documentation using Postman.
 
 ## Deployment
 
 - [x] Configure `MONGODB_URI` to MongoDB Atlas value
-- [x] Deploy to fly.io
+- [x] Deploy to fly.io: <https://techgene.fly.dev/>
 
 ## Testing
 

@@ -17,9 +17,15 @@ export default async function wishlistTogglePrivacy(
 
     const isPrivate = !!req.body.isPrivate;
 
-    const updatedWishlist = await Wishlists.findByIdAndUpdate(wishlistId, {
-      isPrivate,
-    });
+    const updatedWishlist = await Wishlists.findByIdAndUpdate(
+      wishlistId,
+      {
+        isPrivate,
+      },
+      {
+        new: true,
+      }
+    );
 
     res.json({
       data: {

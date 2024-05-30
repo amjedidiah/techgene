@@ -20,7 +20,7 @@ export default async function wishlistAddItem(
     if (!wishlist) throw new HttpError('Wishlist not found', 404);
 
     const isProductInWishlist = wishlist.items.some(
-      (item) => item.product._id.toString() === productId
+      (item) => item.product?._id.toString() === productId
     );
     if (isProductInWishlist)
       throw new HttpError(

@@ -12,7 +12,6 @@ const Wishlists = new Schema(
           type: Schema.Types.ObjectId,
           ref: 'Products',
           required: true,
-          unique: true,
         },
         addedAt: { type: Date, default: Date.now },
       },
@@ -35,5 +34,7 @@ Wishlists.pre(/^find/, function (this: any, next: any) {
   ).select('-sessionId'); // Populate only the name, image, and price fields
   next();
 });
+
+Wishlists.index({ 'items.product': 1 }, { sparse: true });
 
 export default model('Wishlists', Wishlists);

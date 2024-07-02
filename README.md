@@ -60,7 +60,6 @@ The main API endpoints are listed below. For a full list of API endpoints, refer
 
 ## Technologies Used
 
-* **Nx:** Monorepo management.
 * **TypeScript:** For type safety and maintainability.
 * **Express:** For building the RESTful API.
 * **Mongoose:** For MongoDB object modelling.
